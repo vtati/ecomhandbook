@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Hand Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .banner {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 24px;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+        }
+        #menu {
+            width: 250px;
+            margin-right: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+        }
+        .step-header {
+            cursor: pointer;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #e9ecef;
+            border: 1px solid #adb5bd;
+            border-radius: 4px;
+        }
+        .topic-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .topic-item {
+            padding: 5px 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .topic-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">Ecommerce Hand Book</div>
+    <div class="content">
+        <div id="menu"></div>
+    </div>
+
+    <script>
+const data = [{'step': 1, 'topic': 'Select a Niche', 'vimeoUrl': 'https://vimeo.com/862225023/27a075a3c9'}, {'step': 1, 'topic': 'Shopify vs Etsy', 'vimeoUrl': 'https://vimeo.com/862224733/8766143400'}, {'step': 1, 'topic': 'Phase 1 - Brainstorm 20 ideas', 'vimeoUrl': 'https://vimeo.com/862211414/5cbd8aa64d'}, {'step': 1, 'topic': 'Phase 2 - Narrow 20 ideas to 5', 'vimeoUrl': 'https://vimeo.com/862221952/9f30e2e4b2'}, {'step': 1, 'topic': 'Phase 3 - Pick winning niche', 'vimeoUrl': 'https://vimeo.com/862223570/d8859007e2'}, {'step': 1, 'topic': 'Choose a store name', 'vimeoUrl': 'https://vimeo.com/868791858/1ea6372011'}, {'step': 2, 'topic': 'Source & Choose Products to Sell', 'vimeoUrl': 'https://vimeo.com/862508322/43640867b2'}, {'step': 2, 'topic': 'Create free print on demand designs', 'vimeoUrl': 'https://vimeo.com/862423071/ae92029d37'}, {'step': 2, 'topic': 'Get custom designs on Fiverr', 'vimeoUrl': 'https://vimeo.com/862420099/02cd8f3713'}, {'step': 2, 'topic': 'Download free pictures & photos', 'vimeoUrl': 'https://vimeo.com/862440850/be88bd73a2'}, {'step': 2, 'topic': 'Get instant designs from Shutterstock', 'vimeoUrl': 'https://vimeo.com/862417808/dcff462c6c'}, {'step': 2, 'topic': 'Use Dall-E AI art for print on demand', 'vimeoUrl': 'https://vimeo.com/862439176/57f25159e9'}, {'step': 2, 'topic': 'Secrets of 6 & 7 figure print on demand', 'vimeoUrl': 'https://vimeo.com/862494539/7042f7ade6'}, {'step': 2, 'topic': 'Pick viral AliExpress products', 'vimeoUrl': 'https://vimeo.com/862486265/70a02a8061'}, {'step': 2, 'topic': 'Choose the best AliExpress supplier', 'vimeoUrl': 'https://vimeo.com/862443239/2c2db7a95b'}, {'step': 2, 'topic': 'Select the right USA AliExpress supplier', 'vimeoUrl': 'https://vimeo.com/862445504/a8247ccf7d'}, {'step': 2, 'topic': 'Price products', 'vimeoUrl': 'https://vimeo.com/862488476/ae92825b7d'}, {'step': 3, 'topic': 'Introduction', 'vimeoUrl': 'https://vimeo.com/863055827/0c297625aa'}, {'step': 3, 'topic': 'Create a Shopify account', 'vimeoUrl': 'https://vimeo.com/867608189/90a822c9ae'}, {'step': 3, 'topic': 'Install Craft theme', 'vimeoUrl': 'https://vimeo.com/863055372/53a1cf7c62'}, {'step': 3, 'topic': 'Create Printify account', 'vimeoUrl': 'https://vimeo.com/867624497/9715a0828b'}, {'step': 3, 'topic': 'Create Printful account', 'vimeoUrl': 'https://vimeo.com/867614751/2c5a7f6399'}, {'step': 3, 'topic': 'Create product with Printify', 'vimeoUrl': 'https://vimeo.com/867613072/3468bec222'}, {'step': 3, 'topic': 'Create product with Printful', 'vimeoUrl': 'https://vimeo.com/867610264/8ec52bb8a6'}, {'step': 3, 'topic': 'Install Oberlo', 'vimeoUrl': 'https://vimeo.com/863214399/7ed817affc'}, {'step': 3, 'topic': 'Install Chrome extension', 'vimeoUrl': 'https://vimeo.com/863214780/fcb6ad0db1'}, {'step': 3, 'topic': 'Add China dropshipped products', 'vimeoUrl': 'https://vimeo.com/863214816/5fe6b5e6b7'}, {'step': 3, 'topic': 'Add USA dropshipped products', 'vimeoUrl': 'https://vimeo.com/863215046/a74375ba8a'}, {'step': 3, 'topic': 'Update product pages', 'vimeoUrl': 'https://vimeo.com/867626098/458e6c7dd6'}, {'step': 3, 'topic': 'Add collections', 'vimeoUrl': 'https://vimeo.com/867611066/55ad2727cb'}, {'step': 3, 'topic': 'Create About Us page', 'vimeoUrl': 'https://vimeo.com/867611094/b8b87ccb46'}, {'step': 3, 'topic': 'Create Contact Us page', 'vimeoUrl': 'https://vimeo.com/867611252/0cdd4eefbf'}, {'step': 3, 'topic': 'Create refund policy', 'vimeoUrl': 'https://vimeo.com/867611280/e79f2e160a'}, {'step': 3, 'topic': 'Set up payments', 'vimeoUrl': 'https://vimeo.com/867622986/1188dd5b3e'}, {'step': 3, 'topic': 'Add legal pages', 'vimeoUrl': 'https://vimeo.com/867611460/d4fb20cad1'}, {'step': 3, 'topic': 'Add menus', 'vimeoUrl': 'https://vimeo.com/867623424/8bf40f2101'}, {'step': 3, 'topic': 'Create a logo', 'vimeoUrl': 'https://vimeo.com/867625697/86e79c575f'}, {'step': 3, 'topic': 'Customize design & homepage', 'vimeoUrl': 'https://vimeo.com/863057234/80964c5175'}, {'step': 3, 'topic': 'Add shipping', 'vimeoUrl': 'https://vimeo.com/867607430/82c91b7b54'}, {'step': 3, 'topic': 'Edit confirmation email', 'vimeoUrl': 'https://vimeo.com/863208054/1fdf8010ea'}, {'step': 3, 'topic': 'Edit abandon cart email', 'vimeoUrl': 'https://vimeo.com/863057178/919f862743'}, {'step': 3, 'topic': 'Add live chat', 'vimeoUrl': 'https://vimeo.com/867607358/84e2a93fbb'}, {'step': 3, 'topic': 'Buy a domain name', 'vimeoUrl': 'https://vimeo.com/867607271/9ba7017cbf'}, {'step': 3, 'topic': 'Remove store password', 'vimeoUrl': 'https://vimeo.com/867607467/69e90ba020'}, {'step': 3, 'topic': 'Use Placeit for lifestyle photos', 'vimeoUrl': 'https://vimeo.com/862927959/5f923c2062'}, {'step': 3, 'topic': 'Create Printify account & product for Etsy', 'vimeoUrl': 'https://vimeo.com/863056162/e0d492e2ed'}, {'step': 3, 'topic': 'Create free Etsy store', 'vimeoUrl': 'https://vimeo.com/863056273/4d6dd31f45'}, {'step': 3, 'topic': 'Connect Printify to Etsy', 'vimeoUrl': 'https://vimeo.com/863056732/6f594653e3'}, {'step': 3, 'topic': 'Optimize Etsy products', 'vimeoUrl': 'https://vimeo.com/863056761/7144113f81'}, {'step': 3, 'topic': 'Appeal Etsy ban', 'vimeoUrl': 'https://vimeo.com/863055688/4a89e01d7f'}, {'step': 4, 'topic': 'Add trust icons', 'vimeoUrl': 'https://vimeo.com/862573443/4d07ba0423'}, {'step': 4, 'topic': 'Add discounted pricing', 'vimeoUrl': 'https://vimeo.com/862573592/b7282ffd70'}, {'step': 4, 'topic': 'Add SMAR7 bundle upsell', 'vimeoUrl': 'https://vimeo.com/862573634/b8830bbdce'}, {'step': 4, 'topic': 'Add Spin-a-Sale wheel app', 'vimeoUrl': 'https://vimeo.com/862573791/ce61ce9285'}, {'step': 4, 'topic': 'Add after sale coupons', 'vimeoUrl': 'https://vimeo.com/862573288/9e8f358307'}, {'step': 5, 'topic': '$5/day Etsy ad strategy', 'vimeoUrl': 'https://vimeo.com/899325392/0bf18c7e3d'}, {'step': 5, 'topic': 'Intro to free Google SEO traffic', 'vimeoUrl': 'https://vimeo.com/863084528/e4314409cb'}, {'step': 5, 'topic': 'Find low competition keywords', 'vimeoUrl': 'https://vimeo.com/863096668/fcf18c94d5'}, {'step': 5, 'topic': 'Optimize product pages', 'vimeoUrl': 'https://vimeo.com/862933950/045d6dec5e'}, {'step': 5, 'topic': 'Optimize category pages', 'vimeoUrl': 'https://vimeo.com/862924679/377409ab41'}, {'step': 5, 'topic': 'Optimize homepage', 'vimeoUrl': 'https://vimeo.com/862931039/6db30b8ed8'}, {'step': 5, 'topic': 'Add & optimize blog posts', 'vimeoUrl': 'https://vimeo.com/869134704/589c072ce5'}, {'step': 5, 'topic': 'Build backlinks with Instagram', 'vimeoUrl': 'https://vimeo.com/863033665/88c0dd2237'}, {'step': 5, 'topic': 'Film mobile video ad', 'vimeoUrl': 'https://vimeo.com/862917436/ef4da9e7e1'}, {'step': 5, 'topic': 'Edit mobile video ad', 'vimeoUrl': 'https://vimeo.com/858842559/f7592d3c4a'}, {'step': 5, 'topic': 'Intro to Facebook ads', 'vimeoUrl': 'https://vimeo.com/862930025/fe2c2e3c40'}, {'step': 5, 'topic': 'Create Facebook account', 'vimeoUrl': 'https://vimeo.com/862935648/37f1827078'}, {'step': 5, 'topic': 'Create Facebook fan page', 'vimeoUrl': 'https://vimeo.com/862911622/5649c20220'}, {'step': 5, 'topic': 'Install Facebook pixel', 'vimeoUrl': 'https://vimeo.com/862924598/9b24dc6cb5'}, {'step': 5, 'topic': 'Create lifestyle print on demand images', 'vimeoUrl': 'https://vimeo.com/862927959/5f923c2062'}, {'step': 5, 'topic': 'Create showcase video ad', 'vimeoUrl': 'https://vimeo.com/863092518/e394128a20'}, {'step': 5, 'topic': 'Edit showcase video ad', 'vimeoUrl': 'https://vimeo.com/863099349/a3ac1f31c2'}, {'step': 5, 'topic': 'Create example video ad', 'vimeoUrl': 'https://vimeo.com/863088166/e814116336'}, {'step': 5, 'topic': 'Edit example video ad', 'vimeoUrl': 'https://vimeo.com/862915254/61d8a7e5b9'}, {'step': 5, 'topic': 'Create image ad campaign', 'vimeoUrl': 'https://vimeo.com/862907041/4d7b0a6633'}, {'step': 5, 'topic': 'Create 3-ad video campaign', 'vimeoUrl': 'https://vimeo.com/862931294/43486df849'}, {'step': 5, 'topic': 'Scale Facebook ads', 'vimeoUrl': 'https://vimeo.com/868590991/a11d57c949'}, {'step': 6, 'topic': 'Fulfill orders with Oberlo', 'vimeoUrl': 'https://vimeo.com/862598200/232b9d9546'}, {'step': 6, 'topic': 'Fulfill Printify orders', 'vimeoUrl': 'https://vimeo.com/867689716/4ad9df67c4'}, {'step': 6, 'topic': 'Daily store management', 'vimeoUrl': 'https://vimeo.com/862598306/615cbf71c8'}, {'step': 6, 'topic': 'Scale by hiring freelancers', 'vimeoUrl': 'https://vimeo.com/862592284/28f36dabaf'}];
+        function openInNewTab(url) {
+            window.open(url, '_blank').focus();
+        }
+
+        function createMenu(data) {
+            const menu = document.getElementById('menu');
+            const steps = new Map();
+
+            // Grouping topics by step
+            data.forEach(item => {
+                if (!steps.has(item.step)) {
+                    steps.set(item.step, []);
+                }
+                steps.get(item.step).push(item);
+            });
+
+            // Creating menu items
+            steps.forEach((topics, step) => {
+                const stepHeader = document.createElement('div');
+                stepHeader.className = 'step-header';
+                stepHeader.textContent = `Step ${step}`;
+                stepHeader.onclick = () => toggleTopics(step);
+
+                const topicList = document.createElement('ul');
+                topicList.className = 'topic-list';
+                topicList.id = `step-${step}-topics`;
+
+                topics.forEach(topic => {
+                    const topicItem = document.createElement('li');
+                    topicItem.className = 'topic-item';
+                    topicItem.textContent = topic.topic;
+                    topicItem.onclick = () => openInNewTab(topic.vimeoUrl);
+                    topicList.appendChild(topicItem);
+                });
+
+                menu.appendChild(stepHeader);
+                menu.appendChild(topicList);
+            });
+        }
+
+        function toggleTopics(step) {
+            const topicList = document.getElementById(`step-${step}-topics`);
+            topicList.style.display = topicList.style.display === 'block' ? 'none' : 'block';
+        }
+
+        createMenu(data);
+    </script>
+</body>
+</html>
