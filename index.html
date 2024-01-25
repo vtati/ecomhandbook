@@ -22,6 +22,12 @@
           // Show the content
             document.getElementById('content').style.display = 'block';
         }
+        function signOut() {
+          google.accounts.id.disableAutoSelect();
+        
+          // Your sign-out logic goes here
+        }
+
   
     </script>
 
@@ -88,8 +94,11 @@
      data-shape="rectangular"
      data-logo_alignment="left">
     </div>
-    <div class="banner">Ecommerce Hand Book</div>
-    <div class="content" style="display:none;">
+    <div class="banner">
+        Ecommerce Hand Book
+        <a href="#" onclick="signOut();">Sign out</a>
+    </div>
+    <div id="content" style="display:none;">
         <div id="menu"></div>
     </div>
     <script>
