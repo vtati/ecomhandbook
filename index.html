@@ -6,21 +6,19 @@
     <title>Ecommerce Hand Book</title>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
+      function init() {
+        console.log("Initializing Google Auth");
+        gapi.load('auth2', function() {
+          auth2 = gapi.auth2.init({
+            client_id: '1054794164751-4i6loe815ebthmrjh1f7a0hfb99cqad8.apps.googleusercontent.com',
+            scope: 'profile email'
+          });
+        });
+      }
       function onSignIn(googleUser) {
         // Get the user's profile information
         var profile = googleUser.getBasicProfile();
         // You can now use this profile info to create an account on your server
-      }
-    </script>
-    <script>
-      function init() {
-        gapi.load('auth2', function() {
-          auth2 = gapi.auth2.init({
-            client_id: '1054794164751-4i6loe815ebthmrjh1f7a0hfb99cqad8.apps.googleusercontent.com',
-            // Scopes to request, space-separated
-            scope: 'profile email'
-          });
-        });
       }
     </script>
 
@@ -74,7 +72,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="init()">
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
     <div class="banner">Ecommerce Hand Book</div>
