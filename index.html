@@ -19,6 +19,8 @@
           // Handle the user's sign-in information here
           var id_token = response.credential;
           // Send this token to your server for verification and to create a session
+          // Show the content
+            document.getElementById('content').style.display = 'block';
         }
   
     </script>
@@ -87,7 +89,7 @@
      data-logo_alignment="left">
     </div>
     <div class="banner">Ecommerce Hand Book</div>
-    <div class="content">
+    <div class="content" style="display:none;">
         <div id="menu"></div>
     </div>
     <script>
